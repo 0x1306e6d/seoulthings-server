@@ -1,0 +1,30 @@
+{
+    "name": "seoulthings-server",
+    "version": "0.1.0",
+    "description": "2018년 서울시 앱 공모전 출품작 '서울띵즈' 서버",
+    "keywords": [
+        "2018년 서울시 앱 공모전"
+    ],
+    "scripts": {
+        "start": "node src/main.js"
+    },
+    "dependencies": {
+        "body-parser": "^1.18.3",
+        "debug": "^3.1.0",
+        "express": "^4.16.3",
+        "morgan": "^1.9.0",
+        "path": "^0.12.7"
+    },
+    "author": {
+        "name": "Gihwan Kim",
+        "email": "gihwanxyz@gmail.com"
+    },
+    "homepage": "https://github.com/gihwanxyz/seoulthings-server",
+    "bugs": {
+        "url": "https://github.com/gihwanxyz/seoulthings-server/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/gihwanxyz/seoulthings-server"
+    }
+}
