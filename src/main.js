@@ -4,12 +4,15 @@ const http = require('http');
 const morgan = require('morgan');
 const path = require('path');
 
+const controllers = require('./controllers');
+
 const app = express();
 
 app.use(morgan('common'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'resources')));
+app.use(controllers);
 
 const hostname = process.env.HOSTNAME || '0.0.0.0';
 const port = process.env.PORT || 8080;
