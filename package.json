@@ -6,6 +6,7 @@
         "2018년 서울시 앱 공모전"
     ],
     "scripts": {
+        "debug": "DEBUG=seoulthings:* node src/main.js",
         "start": "node src/main.js"
     },
     "dependencies": {
