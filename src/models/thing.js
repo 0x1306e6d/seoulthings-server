@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
-    const Things = sequelize.define(
-        'Things',
+    const Thing = sequelize.define(
+        'Thing',
         {
             id: {
                 type: DataTypes.UUID,
@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
                 type: DataTypes.STRING,
                 allowNull: false,
             },
-            things: {
+            contents: {
                 type: DataTypes.TEXT,
                 allowNull: false,
             },
@@ -23,9 +23,9 @@ module.exports = (sequelize, DataTypes) => {
         },
         {
             timestamps: false,
-            tableName: 'things',
+            tableName: 'thing',
             schema: 'seoulthings',
         }
     )
-    return Things;
+    return Thing;
 };

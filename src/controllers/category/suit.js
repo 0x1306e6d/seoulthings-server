@@ -2,29 +2,23 @@ const debug = require('debug')('seoulthings:controllers:category:suit');
 const models = require('./../../models');
 
 module.exports = (req, res) => {
-    const start = req.params.start;
-    const end = req.params.end;
-    debug('get suit rental information from %d to %d', start, end);
+    const offset = req.params.offset;
+    const limit = req.params.limit;
+    debug('get suit rental information from %d (%d)', offset, limit);
 
-    if (start > end) {
-        console.error("Suit query's start offset must be smaller than end. (start: %d, end: %d)", start, end);
-        res.sendStatus(400);
-        return;
-    }
-
-    models.Things
+    models.Thing
         .findAll(
             {
                 where: { category: 'SUIT' },
                 order: [['id', 'ASC']],
-                offset: (start - 1),
-                limit: (end - start + 1),
+                offset: offset,
+                limit: limit,
             }
         )
         .then((things) => {
             debug('Suit rental information: %s', things);
 
-            res.status(200).send(things);
+            res.status(200).send({ things: things });
         })
         .catch((err) => {
             console.error('Failed to find suit rental information.');

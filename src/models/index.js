@@ -16,5 +16,5 @@ module.exports = {
     Sequelize,
     Location: sequelize.import(path.join(__dirname, 'location.js')),
     Remind: sequelize.import(path.join(__dirname, 'remind.js')),
-    Things: sequelize.import(path.join(__dirname, 'things.js')),
+    Thing: sequelize.import(path.join(__dirname, 'thing.js')),
 };

@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 
-router.get('/bicycle/from/:start/to/:end', require('./bicycle'));
-router.get('/medicalDevice/from/:start/to/:end', require('./medicalDevice'));
-router.get('/powerBank/from/:start/to/:end', require('./powerBank'));
-router.get('/suit/from/:start/to/:end', require('./suit'));
-router.get('/tool/from/:start/to/:end', require('./tool'));
-router.get('/toy/from/:start/to/:end', require('./toy'));
+router.get('/bicycle/from/:offset/to/:limit', require('./bicycle'));
+router.get('/medicalDevice/from/:offset/to/:limit', require('./medicalDevice'));
+router.get('/powerBank/from/:offset/to/:limit', require('./powerBank'));
+router.get('/suit/from/:offset/to/:limit', require('./suit'));
+router.get('/tool/from/:offset/to/:limit', require('./tool'));
+router.get('/toy/from/:offset/to/:limit', require('./toy'));
 
 module.exports = router;
