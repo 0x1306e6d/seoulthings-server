@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const path = require('path');
 
 const controllers = require('./controllers');
+const models = require('./models');
 
 const app = express();
 
@@ -39,4 +40,14 @@ server.on('listening', () => {
     const address = server.address();
     console.log("Listening on %s:%d", address.address, address.port);
 });
-server.listen(port, hostname);
+
+models.sequelize.authenticate()
+    .then(() => {
+        console.log('Authenticated with Sequelize.');
+
+        server.listen(port, hostname);
+    })
+    .catch((err) => {
+        console.error('Failed to authenticate with Sequelize.');
+        console.error(err);
+    });
