@@ -8,11 +8,11 @@ module.exports = (sequelize, DataTypes) => {
                 unique: true,
                 primaryKey: true,
             },
-            owner: {
+            ownerId: {
                 type: DataTypes.UUID,
                 allowNull: false,
             },
-            thing: {
+            thingId: {
                 type: DataTypes.UUID,
                 allowNull: false,
             },
@@ -22,7 +22,6 @@ module.exports = (sequelize, DataTypes) => {
             }
         },
         {
-            timestamps: false,
             tableName: 'remind',
             schema: 'seoulthings',
         }

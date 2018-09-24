@@ -11,6 +11,12 @@ module.exports = (req, res) => {
             {
                 where: { category: 'TOOL' },
                 order: [['id', 'ASC']],
+                include: [
+                    {
+                        model: models.Location,
+                        as: 'location',
+                    }
+                ],
                 offset: offset,
                 limit: limit,
             }

@@ -11,10 +11,16 @@ const sequelize = new Sequelize({
     operatorsAliases: false,
 });
 
+const Location = sequelize.import(path.join(__dirname, 'location.js'));
+const Remind = sequelize.import(path.join(__dirname, 'remind.js'));
+const Thing = sequelize.import(path.join(__dirname, 'thing.js'));
+
+Thing.belongsTo(Location, { as: 'location', foreignKey: 'locationId', targetKey: 'id' });
+
 module.exports = {
     sequelize,
     Sequelize,
-    Location: sequelize.import(path.join(__dirname, 'location.js')),
-    Remind: sequelize.import(path.join(__dirname, 'remind.js')),
-    Thing: sequelize.import(path.join(__dirname, 'thing.js')),
+    Location,
+    Remind,
+    Thing,
 };
