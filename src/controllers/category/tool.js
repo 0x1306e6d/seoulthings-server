@@ -10,7 +10,7 @@ module.exports = (req, res) => {
         .findAll(
             {
                 where: { category: 'TOOL' },
-                order: [['id', 'ASC']],
+                order: [[sequelize.col('location.name'), 'ASC']],
                 include: [
                     {
                         model: models.Location,
@@ -22,7 +22,7 @@ module.exports = (req, res) => {
             }
         )
         .then((things) => {
-            debug('Tool rental information: %s', things);
+            debug('Tool rental information: %o', things);
 
             res.status(200).send({ things: things });
         })

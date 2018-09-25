@@ -10,7 +10,7 @@ module.exports = (req, res) => {
         .findAll(
             {
                 where: { category: 'BICYCLE' },
-                order: [['id', 'ASC']],
+                order: [[sequelize.col('location.name'), 'ASC']],
                 include: [
                     {
                         model: models.Location,
