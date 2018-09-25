@@ -1,7 +1,6 @@
 const express = require('express');
 const router = express.Router();
 
-router.use('/category', require('./category'));
-router.use('/search', require('./search'));
+router.use('/things', require('./things'));
 
 module.exports = router;
