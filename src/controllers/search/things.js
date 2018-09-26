@@ -4,11 +4,9 @@ const router = express.Router();;
 
 const models = require('./../../models');
 
-router.get('/:offset/:limit', (req, res) => {
-    const offset = req.params.offset;
-    const limit = req.params.limit;
+router.get('/', (req, res) => {
     const keyword = req.query.keyword;
-    debug('search all things from %d (%d) with keyword %s', offset, limit, keyword);
+    debug('search all things with keyword %s', keyword);
 
     const sequelize = models.sequelize;
     const Sequelize = models.Sequelize;
@@ -30,8 +28,6 @@ router.get('/:offset/:limit', (req, res) => {
                         as: 'location',
                     }
                 ],
-                offset: offset,
-                limit: limit,
             }
         )
         .then((things) => {
@@ -47,12 +43,10 @@ router.get('/:offset/:limit', (req, res) => {
         });
 });
 
-router.get('/:category/:offset/:limit', (req, res) => {
+router.get('/:category', (req, res) => {
     const category = req.params.category;
-    const offset = req.params.offset;
-    const limit = req.params.limit;
     const keyword = req.query.keyword;
-    debug('search %s things from %d (%d) with keyword %s', category, offset, limit, keyword);
+    debug('search %s things with keyword %s', category, keyword);
 
     const sequelize = models.sequelize;
     const Sequelize = models.Sequelize;
@@ -75,8 +69,6 @@ router.get('/:category/:offset/:limit', (req, res) => {
                         as: 'location',
                     }
                 ],
-                offset: offset,
-                limit: limit,
             }
         )
         .then((things) => {
