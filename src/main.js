@@ -1,3 +1,4 @@
+const admin = require('firebase-admin');
 const bodyParser = require('body-parser');
 const express = require('express');
 const http = require('http');
@@ -14,6 +15,25 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'resources')));
 app.use(controllers);
+
+try {
+    const serviceAccount = require('./../firebase-adminsdk.json');
+    admin.initializeApp({
+        credential: admin.credential.cert(serviceAccount),
+        databaseURL: 'https://seoulthings.firebaseio.com',
+    });
+} catch (error) {
+    console.error('Failed to load service account credentials.');
+    console.error('Load service account credentials from environment variables.');
+    admin.initializeApp({
+        credential: admin.credential.cert({
+            projectId: process.env.FIREBASE_PROJECT_ID,
+            clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+            privateKey: process.env.FIREBASE_PRIVATE_KEY,
+        }),
+        databaseURL: 'https://seoulthings.firebaseio.com',
+    });
+}
 
 const hostname = process.env.HOSTNAME || '0.0.0.0';
 const port = process.env.PORT || 8080;
