@@ -19,7 +19,10 @@ module.exports = (sequelize, DataTypes) => {
             locationId: {
                 type: DataTypes.UUID,
                 allowNull: false,
-            }
+            },
+            tip: {
+                type: DataTypes.TEXT,
+            },
         },
         {
             timestamps: false,

@@ -19,6 +19,9 @@ module.exports = (sequelize, DataTypes) => {
             contact: {
                 type: DataTypes.TEXT,
             },
+            web: {
+                type: DataTypes.TEXT,
+            },
             latitude: {
                 type: DataTypes.REAL,
             },
